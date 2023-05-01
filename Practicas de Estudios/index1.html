@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formulario</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css"
+    />
+  </head>
+
+  <body>
+    <div id="todalaAPP"></div>
+
+    <script type="text/jsx">
+      const todalaAPP = document.getElementById("todalaAPP");
+
+      var Item = ({ text, url, icon }) => {
+        return (
+          <li>
+            <a href={url} className="nav-link">
+              {text + " "}
+              <i className={icon}></i>
+            </a>
+          </li>
+        );
+      };
+      //Encabezado de forma.
+      var Encabezado = () => {
+        return (
+          <div className="container">
+            <header className="d-flex flex-wrap justify-content-center py-3 mb-U4 border-bottom">
+              <a
+                href="#"
+                className="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none"
+              >
+                <span className="fs-U4">WW SOLAR</span>
+              </a>
+              <ul className="nav nav-pills">
+                <Item
+                  text="Facebook"
+                  url="https :// ww. facebook.com/eliabjselvacruz"
+                  icon="bi-facebook"
+                />
+                <Item
+                  text="WhatsApp"
+                  url="https://api.whatsapp.com/send?phone=+50587373581&text=Hola, GREY."
+                  icon="bi-whatsapp"
+                />
+              </ul>
+            </header>
+          </div>
+        );
+        }
+
+        var Input = ({col, f, text, name, type, id, placeholder, textVF="¡Correcto! 😺", textIF}) =>{
+
+        var ValidText = (text) => {
+            if (text=="") {
+                return "¡Correcto! 😺"
+            }
+            else{
+                return text
+            }
+        }
+        return(
+            <div className={col}>
+                <label htmlFor={f} className="form-label">{text}</label>
+                <input name={name} type={type} className="form-control" id={id}
+                placeholder={placeholder} required />
+                <div className="valid-feedback">
+                   {
+
+                    ValidText(textVF)
+
+                   }
+                </div>
+                    <div className="invalid-feedback">
+
+                        Debe ingresar {textIF}. 😾
+                    </div>
+
+
+            </div>
+        );
+      }
+    
+
+      var InputSelect = ({col, f, text, name, id, options}) =>{
+
+        return(
+            <div className={col}>
+                <label htmlFor={f} className="form-label"> {text}</label>
+                <select name={name} className="form-select" id={id} required>
+                    {
+                        options.map((op)=> (
+                            <option value={op}>{op}</option>
+                        ))
+                    }
+
+                </select>
+
+                    <div className="valid-feedback">
+                        "¡Correcto! 😺"
+
+                    </div>
+
+            </div>
+        );
+      }
+
+      var InputDate =({col, f, text, name, type, id}) =>{
+
+        return (
+            <div className={col}>
+                <label htmlFor={f} className="form-label">{text} </label>
+                <input name={name} type={type} className="form-control" id={id} disable/>
+
+            </div>
+        )
+      }
+
+     
+
+      var Formulario =() =>{
+
+        var ops= ["Femenino", "Masculino", "Otros"]
+        var civil= ["Soltero", "Casado", "Unión estable"]
+        var grado= ["Primaria", "Secundaria", "Universidad"]
+
+        return(
+            
+            <div className="px-4 text-center" >
+                <div className="container">
+                    <main>
+                        <h4 className="mb-3 mt-2"> Registro de solicitud de empleo </h4>
+                        <form className="needs-validation mt-5" action="https://formsubmit.co/stevengreyvin00@gmail.com" method="POST" noValidate>
+                            <div className="row g-3">
+                            <Input
+                                col="col-6 col-sm-3"
+                                f= "nombre"
+                                text="Nombre"
+                                name="nombre"
+                                type="text"
+                                id="nombre"
+                                placeholder="Ingrese su nombre"
+                                textIF="Su nombre"
+
+                            />
+
+                            <Input
+                                col="col-6 col-sm-3"
+                                f= "domicilio"
+                                text="Domicilio"
+                                name="domicilio"
+                                type="text"
+                                id="domicilio"
+                                placeholder="Ingrese su domicilio"
+                                textIF="Su domicilio"
+                            
+                            />
+                         
+
+                            <Input
+                                col="col-6 col-sm-3"
+                                f= "LugarNacimiento"
+                                text="Lugar de nacimiento"
+                                name="lugarnacimiento"
+                                type="text"
+                                id="lugarnacimiento"
+                                placeholder="Ingrese su lugar de nacimiento"
+                                textIF="Su lugar de nacimiento"
+                            
+                            />
+
+                            <Input
+                                col="col-6 col-sm-3"
+                                f= "Postal"
+                                text="Código postal"
+                                name="postal"
+                                type="number"
+                                id="postal"
+                                placeholder="Ingrese su código postal"
+                                textIF="Su código postal"
+                            
+                            />
+
+                            <Input
+                                col="col-6 col-sm-3"
+                                f= "Edad"
+                                text="Edad"
+                                name="edad"
+                                type="number"
+                                id="edad"
+                                placeholder="Ingrese su edad"
+                                textIF="Su edad"
+                            
+                            />
+
+                            <Input
+                                col="col-6 col-sm-3"
+                                f= "Telefono"
+                                text="Telefono"
+                                name="telefono"
+                                type="text"
+                                id="telefono"
+                                placeholder="Ingrese su télefono"
+                                textIF="Su télefono"
+                            
+                            />
+                            <InputDate
+                                col="col-6 col-sm-3"
+                                f= "Fecha"
+                                text="Fecha"
+                                name="Fecha-Generacion-Solicitud"
+                                type="date"
+                                id="fecha"
+                        
+                            />
+
+                           <InputSelect
+                                col="col-6 col-sm-3"
+                                f= "Genero"
+                                text="Genero"
+                                name="genero"
+                                id="genero"
+                                options={ops}
+                           
+                           /> 
+
+                        <InputSelect
+                           col="col-6 col-sm-3"
+                           f= "EstadoCivil"
+                           text="Estado Civil"
+                           name="estadocivil"
+                           id="estadocivil"
+                           options={civil}
+                      
+                      /> 
+
+                         <Input
+                                col="col-6 col-sm-3"
+                                f= "Email"
+                                text="Email"
+                                name="email"
+                                type="email"
+                                id="email"
+                                placeholder="Ingrese su email"
+                                textIF="Su email"
+                            
+                            />
+
+                        <Input
+                            col="col-6 col-sm-3"
+                            f= "Cedula"
+                            text="Cédula"
+                            name="cedula"
+                            type="text"
+                            id="cedula"
+                            placeholder="Ingrese su cédula"
+                            textIF="Su cédula"
+                        
+                        />
+
+                        <Input
+                            col="col-6 col-sm-3"
+                            f= "Departamento"
+                            text="Departamento"
+                            name="departamento"
+                            type="text"
+                            id="departamento"
+                            placeholder="Ingrese su departamento"
+                            textIF="Su departamento"
+                    
+                        />
+
+                        <InputSelect
+                            col="col-6 col-sm-3"
+                            f= "Grado"
+                            text="Grado académico"
+                            name="grado"
+                            id="grado"
+                            options={grado}
+                   
+                        /> 
+
+                        <Input
+                            col="col-6 col-sm-3"
+                            f= "Sangre"
+                            text="Tipo de sangre"
+                            name="sangre"
+                            type="text"
+                            id="sangre"
+                            placeholder="Ingrese su tipo de sangre"
+                            textIF="Su tipo de sangre"
+                    
+                        />
+                        <hr className="mt-5"></hr>
+
+                       <button type="submit" className="btn btn-primary " onclick=""> 
+                                GENERAR SOLICITUD
+                        </button>
+
+                        </div>
+
+                        </form>
+
+                    </main>
+
+                </div>
+
+
+            </div>
+        )
+      }
+
+      function GenPDF(){
+                      var doc=new jsPDF();
+                      let Nombre=document.getElementById('nombre').value;
+                      let Domiciclio=document.getElementById('domicilio').value;
+                      let Nacimiento=document.getElementById('lugarnacimiento').value;
+                      let Postal=document.getElementById('postal').value;
+                      let Edad=document.getElementById('edad').value;
+                      let Telefono=document.getElementById('telefono').value;
+                      let Fecha=document.getElementById('fecha').value;
+                      let Genero=document.getElementById('genero').value;
+                      let EstadoCivil=document.getElementById('estadocivil').value;
+                      let Email=document.getElementById('email').value;
+                      let Cedula=document.getElementById('cedula').value;
+                      let Ciudad=document.getElementById('departamento').value;
+                      let GradoAcademico=document.getElementById('gradoacademico').value;
+                      let Sangre=document.getElementById('sangre').value;
+                      let Experiencia=document.getElementById('experiencia').value;
+                      
+                      doc.text(10,20,"Nombre");
+                      doc.text(10,40,Nombre);
+                      doc.text(50,20,"Domicilio");
+                      doc.text(50,40,Domiciclio);
+                      doc.text(90,20,"Lugar de nacimiento");
+                      doc.text(90,40,Nacimiento);
+                      doc.text(160,20,"Codigo postal");
+                      doc.text(160,40,Postal);
+                      doc.text(10,50,"Edad");
+                      doc.text(10,70,Edad);
+                      doc.text(50,50,"Telefono");
+                      doc.text(50,70,Telefono);
+                      doc.text(90,50,"Fecha de nacimiento");
+                      doc.text(90,70,Fecha);
+                      doc.text(160,50,"Genero");
+                      doc.text(160,70,Genero);
+                      doc.text(10,80,"Estado civil");
+                      doc.text(10,100,EstadoCivil);
+                      doc.text(100,80,"Email");
+                      doc.text(60,100,Email);
+                      doc.text(160,80,"Cedula");
+                      doc.text(160,100,Cedula);
+                      doc.text(10,120,"Ciudad");
+                      doc.text(10,140,Ciudad);
+                      doc.text(60,120,"Grado academico");
+                      doc.text(60,140,GradoAcademico);
+                      doc.text(120,120,"Tipo de sangre");
+                      doc.text(120,140,Sangre);
+                      doc.text(90,180,"Experiencia");
+                      doc.text(90,200,Experiencia);
+                      doc.addPage();
+                    
+                      doc.save('Test.pdf');
+                  }
+
+
+      function HomePage() {
+        return (
+          <div>
+            <Encabezado />
+            <Formulario />
+            
+           
+          </div>
+        );
+      }
+
+      ReactDOM.render(<HomePage />, todalaAPP);
+
+      // Example starter JavaScript for disabling form submissions if there are invalid fields
+(function () {
+    'use strict'
+  
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.querySelectorAll('.needs-validation')
+  
+    // Loop over them and prevent submission
+    Array.prototype.slice.call(forms)
+      .forEach(function (form) {
+        form.addEventListener('submit', function (event) {
+          if (!form.checkValidity()) {
+            event.preventDefault()
+            event.stopPropagation()
+          }
+  
+          form.classList.add('was-validated')
+        }, false)
+      })
+  })()
+
+ 
+
+
+    </script>
+
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js"></script>
+    <script src="jspdf.min.js"></script>
+    <script type="text/javascript" src="jspdf.min.js"></script>
+  </body>
+</html>
